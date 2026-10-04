@@ -8,8 +8,8 @@ def get_fundamental_data(ticker: str):
         "Company":              info.get("longName"),
         "Sector":               info.get("sector"),
         "Industry":             info.get("industry"),
-
-        # Värdering
+    
+        # Värdering     
         "Market Cap":           info.get("marketCap"),
         "P/E Ratio":            info.get("trailingPE"),
         "Forward P/E":          info.get("forwardPE"),
@@ -42,7 +42,10 @@ def get_fundamental_data(ticker: str):
     }
 
 if __name__ == "__main__":
-    data = get_fundamental_data("AAPL")
+    data = get_fundamental_data("AAON")
+    section_starts = {"Market Cap", "EPS", "Debt to Equity", "Current Price", "Target Price"}
     for key, value in data.items():
+        if key in section_starts:
+            print()
         print(f"{key}: {value}")
 
